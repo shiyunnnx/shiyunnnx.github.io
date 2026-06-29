@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes blob1 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33%       { transform: translate(200px, -150px) scale(1.15); }
+  66%       { transform: translate(-120px, 180px) scale(0.9); }
+}
+
+@keyframes blob2 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33%       { transform: translate(-180px, 150px) scale(1.1); }
+  66%       { transform: translate(200px, -120px) scale(1.2); }
+}
+
+@keyframes blob3 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33%       { transform: translate(150px, 160px) scale(0.85); }
+  66%       { transform: translate(-200px, -130px) scale(1.15); }
+}
+
+@keyframes blob4 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33%       { transform: translate(-160px, -180px) scale(1.2); }
+  66%       { transform: translate(130px, 140px) scale(0.9); }
+}
+
+@keyframes blob5 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33%       { transform: translate(170px, 120px) scale(1.1); }
+  66%       { transform: translate(-140px, -160px) scale(0.95); }
+}
+
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.6;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.blob-1 {
+  width: 550px; height: 550px;
+  background: #7c3aed;
+  top: -120px; left: -120px;
+  animation: blob1 5s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 500px; height: 500px;
+  background: #d946ef;
+  bottom: -100px; right: -100px;
+  animation: blob2 7s ease-in-out infinite;
+}
+
+.blob-3 {
+  width: 450px; height: 450px;
+  background: #22d3ee;
+  top: calc(50% - 225px);
+  left: calc(50% - 225px);
+  animation: blob3 6s ease-in-out infinite;
+}
+
+.blob-4 {
+  width: 480px; height: 480px;
+  background: #f43f5e;
+  top: 30%; right: -80px;
+  animation: blob4 8s ease-in-out infinite;
+}
+
+.blob-5 {
+  width: 420px; height: 420px;
+  background: #818cf8;
+  bottom: 20%; left: -60px;
+  animation: blob5 9s ease-in-out infinite;
+}
+
+@media (max-width: 760px) {
+  .blob-4, .blob-5 { display: none; }
+}
+
+.underline-animate {
+  position: relative;
+}
+
+.underline-animate::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.underline-animate:hover::after {
+  width: 100%;
+}

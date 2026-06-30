@@ -1,7 +1,8 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Outlet } from 'react-router-dom'
 import Footer from './components/Footer'
+import Blogs from './components/Blogs'
 import Projects from './components/Projects'
-import ProjectPage from './pages/ProjectPage'
+import BlogPage from './pages/BlogPage'
 import './index.css'
 
 function Hero() {
@@ -52,9 +53,18 @@ function Hero() {
 
 function Home() {
   return (
-    <div className="min-h-screen bg-white font-sans">
+    <>
       <Hero />
       <Projects />
+      <Blogs />
+    </>
+  )
+}
+
+function Layout() {
+  return (
+    <div className="min-h-screen bg-white font-sans">
+      <Outlet />
       <Footer />
     </div>
   )
@@ -63,8 +73,10 @@ function Home() {
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/projects/:id" element={<ProjectPage />} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/blogs/:id" element={<BlogPage />} />
+      </Route>
     </Routes>
   )
 }

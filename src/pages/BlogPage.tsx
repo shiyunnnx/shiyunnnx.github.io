@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
-import { PROJECTS } from '../data/projects'
+import { BLOGS } from '../data/blogs'
 
 // Eagerly grab all .md files under content/ as raw strings
 const contentModules = import.meta.glob('../content/*.md', { query: '?raw', import: 'default' })
 
-export default function ProjectPage() {
+export default function BlogPage() {
   const { id } = useParams<{ id: string }>()
-  const project = PROJECTS.find((p) => p.id === id)
+  const blog = BLOGS.find((b) => b.id === id)
   const [markdown, setMarkdown] = useState<string | null>(null)
 
   useEffect(() => {
@@ -18,28 +18,21 @@ export default function ProjectPage() {
     loader().then((mod) => setMarkdown(mod as string))
   }, [id])
 
-  if (!project) return <Navigate to="/" replace />
+  if (!blog) return <Navigate to="/" replace />
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero banner */}
-      <div className={`w-full h-64 sm:h-80 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
+      <div className={`w-full h-64 sm:h-80 bg-gradient-to-br ${blog.gradient} relative overflow-hidden`}>
         <img
-          src={project.image}
-          alt={project.title}
+          src={blog.image}
+          alt={blog.title}
           className="w-full h-full object-cover object-top opacity-60 mix-blend-overlay"
         />
         <div className="absolute inset-0 flex items-end">
           <div className="max-w-3xl mx-auto w-full px-6 pb-8">
-            <div className="flex flex-wrap gap-2 mb-3">
-              {project.tech.map((t) => (
-                <span key={t} className="px-3 py-1 rounded-full text-xs font-medium bg-white/20 text-white backdrop-blur-sm">
-                  {t}
-                </span>
-              ))}
-            </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight drop-shadow">
-              {project.title}
+              {blog.title}
             </h1>
           </div>
         </div>
@@ -53,17 +46,9 @@ export default function ProjectPage() {
             SY
           </div>
           <div>
-            <p className="font-semibold text-gray-800 text-sm">{project.author}</p>
-            <p className="text-gray-400 text-sm">{project.date}</p>
+            <p className="font-semibold text-gray-800 text-sm">{blog.author}</p>
+            <p className="text-gray-400 text-sm">{blog.date}</p>
           </div>
-          <a
-            href={project.externalUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="ml-auto px-4 py-2 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-500 text-white text-sm font-semibold hover:shadow-md transition-shadow shrink-0"
-          >
-            Visit project ↗
-          </a>
         </div>
 
         {/* Markdown content */}
@@ -91,6 +76,16 @@ export default function ProjectPage() {
               a: ({ href, children }) => (
                 <a href={href} target="_blank" rel="noreferrer" className="text-violet-600 underline underline-offset-2 hover:text-fuchsia-500 transition-colors">{children}</a>
               ),
+              img: ({ src, alt }) => {
+                const resolvedSrc = src?.startsWith('http') ? src : `/content/${id}/${src}`
+                return (
+                  <img
+                    src={resolvedSrc}
+                    alt={alt ?? ''}
+                    className="w-full rounded-2xl my-6 shadow-md"
+                  />
+                )
+              },
             }}
           >
             {markdown}
@@ -100,8 +95,8 @@ export default function ProjectPage() {
 
       {/* Back link */}
       <div className="max-w-3xl mx-auto px-6 pb-16">
-        <Link to="/#projects" className="underline-animate text-sm text-violet-500 font-medium">
-          ← Back to projects
+        <Link to="/#blogs" className="underline-animate text-sm text-violet-500 font-medium">
+          ← Back to blogs
         </Link>
       </div>
     </div>

@@ -1,36 +1,24 @@
 import { Link } from 'react-router-dom'
-import { PROJECTS, type Project } from '../data/projects'
+import { BLOGS, type Blog } from '../data/blogs'
 
-function ProjectCard({ project }: { project: Project }) {
+function BlogCard({ blog }: { blog: Blog }) {
   return (
     <Link
-      to={project.externalUrl}
-      target="_blank"
-      rel="noreferrer"
+      to={`/blogs/${blog.id}`}
       className="group flex flex-col rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-white border border-gray-100"
     >
-      <div className={`h-44 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
+      <div className={`h-44 bg-gradient-to-br ${blog.gradient} overflow-hidden`}>
         <img
-          src={project.image}
-          alt={project.title}
+          src={blog.image}
+          alt={blog.title}
           className="w-full h-full object-cover object-top"
         />
       </div>
       <div className="p-6 flex flex-col gap-3 flex-1">
         <h3 className="text-xl font-bold text-gray-800 group-hover:text-violet-600 transition-colors">
-          {project.title}
+          {blog.title}
         </h3>
-        <p className="text-gray-500 text-sm leading-relaxed flex-1">{project.description}</p>
-        <div className="flex flex-wrap gap-2 mt-2">
-          {project.tech.map((t) => (
-            <span
-              key={t}
-              className="px-3 py-1 rounded-full text-xs font-medium bg-violet-50 text-violet-600 border border-violet-100"
-            >
-              {t}
-            </span>
-          ))}
-        </div>
+        <p className="text-gray-500 text-sm leading-relaxed flex-1">{blog.description}</p>
         <div className="mt-3 flex items-center justify-between">
           <span className="text-sm text-fuchsia-500 font-semibold group-hover:underline">
             View more →
@@ -41,25 +29,27 @@ function ProjectCard({ project }: { project: Project }) {
   )
 }
 
-function Projects() {
+function Blogs() {
+  const sortedBlogs = BLOGS.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3);
+
   return (
     <section id="projects" className="py-24 px-6 max-w-5xl mx-auto w-full">
       <div className="text-center mb-14">
         <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-800 mb-3">
-          Ongoing{' '}
+          My{' '}
           <span className="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">
-            Projects
+            Blogs
           </span>
         </h2>
-        <p className="text-gray-500 text-lg">Things I'm building and exploring.</p>
+        <p className="text-gray-500 text-lg">Thoughts and insights</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {PROJECTS.map((p) => (
-          <ProjectCard key={p.id} project={p} />
+        {sortedBlogs.map((b) => (
+          <BlogCard key={b.id} blog={b} />
         ))}
       </div>
     </section>
   )
 }
 
-export default Projects
+export default Blogs

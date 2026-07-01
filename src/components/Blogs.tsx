@@ -5,7 +5,7 @@ function BlogCard({ blog }: { blog: Blog }) {
   return (
     <Link
       to={`/blogs/${blog.id}`}
-      className="group flex flex-col rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-white border border-gray-100"
+      className="group flex flex-col rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800"
     >
       <div className={`h-44 bg-gradient-to-br ${blog.gradient} overflow-hidden`}>
         <img
@@ -15,12 +15,12 @@ function BlogCard({ blog }: { blog: Blog }) {
         />
       </div>
       <div className="p-6 flex flex-col gap-3 flex-1">
-        <h3 className="text-xl font-bold text-gray-800 group-hover:text-violet-600 transition-colors">
+        <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
           {blog.title}
         </h3>
-        <p className="text-gray-500 text-sm leading-relaxed flex-1">{blog.description}</p>
+        <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-1">{blog.description}</p>
         <div className="mt-3 flex items-center justify-between">
-          <span className="text-sm text-fuchsia-500 font-semibold group-hover:underline">
+          <span className="text-sm text-fuchsia-500 dark:text-fuchsia-400 font-semibold group-hover:underline">
             View more →
           </span>
         </div>
@@ -35,13 +35,13 @@ function Blogs() {
   return (
     <section id="projects" className="py-24 px-6 max-w-5xl mx-auto w-full">
       <div className="text-center mb-14">
-        <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-800 mb-3">
+        <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-800 dark:text-gray-100 mb-3">
           My{' '}
           <span className="bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">
             Blogs
           </span>
         </h2>
-        <p className="text-gray-500 text-lg">Thoughts and insights</p>
+        <p className="text-gray-500 dark:text-gray-400 text-lg">Thoughts and insights</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {sortedBlogs.map((b) => (

@@ -2,6 +2,7 @@ import { Routes, Route, Outlet } from 'react-router-dom'
 import Footer from './components/Footer'
 import Blogs from './components/Blogs'
 import Projects from './components/Projects'
+import ThemeToggle from './components/ThemeToggle'
 import BlogPage from './pages/BlogPage'
 import './index.css'
 
@@ -20,7 +21,7 @@ function Hero() {
       <div className="blob blob-5" />
 
       <div className="relative z-10 max-w-2xl">
-        <h1 className="text-6xl sm:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+        <h1 className="text-6xl sm:text-7xl font-extrabold tracking-tight mb-6 leading-tight text-gray-900 dark:text-white">
           Hi, I am
           <br className="sm:hidden" />
           {' '}
@@ -28,7 +29,7 @@ function Hero() {
             Shi Yun
           </span>
         </h1>
-        <p className="text-xl sm:text-2xl text-gray-600 leading-relaxed">{intro}</p>
+        <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed">{intro}</p>
 
         <div className="mt-10 flex gap-4 justify-center flex-wrap">
           <a
@@ -41,7 +42,7 @@ function Hero() {
             href="https://github.com/pokeyun"
             target="_blank"
             rel="noreferrer"
-            className="underline-animate px-2 py-3 text-violet-600 font-semibold"
+            className="underline-animate px-2 py-3 text-violet-600 dark:text-violet-400 font-semibold"
           >
             GitHub
           </a>
@@ -63,9 +64,10 @@ function Home() {
 
 function Layout() {
   return (
-    <div className="min-h-screen bg-white font-sans">
+    <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans transition-colors">
       <Outlet />
       <Footer />
+      <ThemeToggle />
     </div>
   )
 }

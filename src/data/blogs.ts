@@ -17,7 +17,7 @@ export interface Blog {
       image: '/cat.avif',
       gradient: 'from-yellow-400 via-red-400 to-pink-500',
       author: 'Shi Yun',
-      date: '29 June 2026',
+      date: '1 June 2026',
     },
     {
       id: 'virtual-pokemon-binder',
@@ -27,7 +27,17 @@ export interface Blog {
       image: '/piplup.webp',
       gradient: 'from-yellow-400 via-red-400 to-pink-500',
       author: 'Shi Yun',
-      date: '30 June 2026',
+      date: '25 June 2026',
     },
+    {
+      id: 'generative-ui',
+      title: 'Exploring Generative UI',
+      description:
+        'My journey into Generative UI.',
+      image: '/generative-ui.webp',
+      gradient: 'from-yellow-400 via-red-400 to-pink-500',
+      author: 'Shi Yun',
+      date: '1 July 2026',
+    }
   ]
   

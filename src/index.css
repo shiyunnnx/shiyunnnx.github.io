@@ -45,6 +45,10 @@ html {
   will-change: transform;
 }
 
+.dark .blob {
+  opacity: 0.35;
+}
+
 .blob-1 {
   width: 550px; height: 550px;
   background: #7c3aed;

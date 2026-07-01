@@ -1,5 +1,5 @@
 Hello world :)
 
-This is a safe space to jot down personal thoughts and midnight ideas before they slip away. My goal is to express more, reflect more, and think more critically — and to figure out how to navigate a world where my job title seems to come up every other week in some "AI will replace developers" headline.
+This is a space to document personal thoughts, learnings and ideas. My current focus is on software engineering, though my goal is to think more critically and keep up with the current pace of tech developments.
 
-I also write occasionally over at [Coral Blogs](https://coral.insea.io/blogs/) for more formal, technical stuff.
+Genuinely I have always enjoyed coding and debugging gives me a sense of achievement, but with AI coding asistants, missing a piece of that joy so here's to me refinding the purpose of coding and the way to happiness.

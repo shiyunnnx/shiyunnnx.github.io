@@ -19,4 +19,14 @@ export const PROJECTS: Project[] = [
     gradient: 'from-yellow-400 via-red-400 to-pink-500',
     image: '/piplup.webp',
   },
+  {
+    id: 2,
+    title: 'Generative UI',
+    description:
+      'Generative UI demo using Claude prompts',
+    tech: ['React', 'TypeScript', 'Tailwind CSS'],
+    externalUrl: 'https://github.com/shiyunnnx/generative-ui',
+    gradient: 'from-yellow-400 via-red-400 to-pink-500',
+    image: '/generative-ui.webp',
+  }
 ]

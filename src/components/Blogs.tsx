@@ -30,7 +30,7 @@ function BlogCard({ blog }: { blog: Blog }) {
 }
 
 function Blogs() {
-  const sortedBlogs = BLOGS.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3);
+  const sortedBlogs = BLOGS.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <section id="projects" className="py-24 px-6 max-w-5xl mx-auto w-full">

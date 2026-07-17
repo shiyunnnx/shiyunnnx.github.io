@@ -42,6 +42,8 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 function Projects() {
+  const sortedProjects = PROJECTS.sort((a, b) => b.id - a.id);
+  
   return (
     <section id="projects" className="py-24 px-6 max-w-5xl mx-auto w-full">
       <div className="text-center mb-14">
@@ -54,7 +56,7 @@ function Projects() {
         <p className="text-gray-500 dark:text-gray-400 text-lg">Things I'm building and exploring.</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {PROJECTS.map((p) => (
+        {sortedProjects.map((p) => (
           <ProjectCard key={p.id} project={p} />
         ))}
       </div>

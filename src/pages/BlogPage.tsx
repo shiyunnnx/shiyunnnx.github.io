@@ -32,6 +32,10 @@ export default function BlogPage() {
   const [markdown, setMarkdown] = useState<string | null>(null)
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [id])
+
+  useEffect(() => {
     if (!id) return
     const loader = contentModules[`../content/${id}.md`]
     if (!loader) return
@@ -77,11 +81,25 @@ export default function BlogPage() {
               h2: ({ children }) => (
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mt-10 mb-4">{children}</h2>
               ),
+              h3: ({ children }) => (
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mt-8 mb-3">{children}</h3>
+              ),
               p: ({ children }) => (
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg mb-6">{children}</p>
               ),
               strong: ({ children }) => (
                 <strong className="font-semibold text-gray-900 dark:text-gray-100">{children}</strong>
+              ),
+              em: ({ children }) => (
+                <em className="italic text-gray-600 dark:text-gray-400">{children}</em>
+              ),
+              blockquote: ({ children }) => (
+                <blockquote className="border-l-4 border-violet-500 dark:border-violet-400 pl-4 my-6 text-gray-600 dark:text-gray-400 italic bg-gray-50 dark:bg-gray-800/40 py-3 rounded-r-lg">
+                  {children}
+                </blockquote>
+              ),
+              hr: () => (
+                <hr className="my-8 border-0 h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" />
               ),
               pre: ({ children }) => <>{children}</>,
               code: ({ className, children }) => {
@@ -146,6 +164,15 @@ export default function BlogPage() {
               ),
               td: ({ children }) => (
                 <td className="px-4 py-3 text-gray-700 dark:text-gray-300 align-top">{children}</td>
+              ),
+              ul: ({ children }) => (
+                <ul className="list-disc list-outside ml-6 mb-6 space-y-2 text-gray-700 dark:text-gray-300 text-lg">{children}</ul>
+              ),
+              ol: ({ children }) => (
+                <ol className="list-decimal list-outside ml-6 mb-6 space-y-2 text-gray-700 dark:text-gray-300 text-lg">{children}</ol>
+              ),
+              li: ({ children }) => (
+                <li className="leading-relaxed">{children}</li>
               ),
             }}
           >

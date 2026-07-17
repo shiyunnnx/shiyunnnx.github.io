@@ -39,7 +39,7 @@ function Hero() {
             View Projects →
           </a>
           <a
-            href="https://github.com/pokeyun"
+            href="https://github.com/shiyunnnx"
             target="_blank"
             rel="noreferrer"
             className="underline-animate px-2 py-3 text-violet-600 dark:text-violet-400 font-semibold"
